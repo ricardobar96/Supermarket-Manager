@@ -19,7 +19,7 @@ Coming soon.
 
 ## Features
 
-* **Client Management:** Maintain a database of clients, storing their personal information.
+* **Client Management:** Maintains a database of clients, storing their personal information.
 <br>
  
 * **Product Management:** Offers a comprehensive list of all products available.
@@ -37,7 +37,7 @@ Coming soon.
 
 The following tables populate the app's database:
 <br>
-
+<br>
 * **Client**: Which stores client's personal information.
 <br>
 

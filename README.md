@@ -1,6 +1,8 @@
 # Supermarket-Manager
 
-Back-end made with Java using the Spring Framework. To manage its MySQL database I use the GUI-based application phpMyAdmin, inside which are stored the tables that manage information about the clients, products and orders of a supermarket.
+Back-end made with Java using the Spring Framework.
+<br>
+To manage its MySQL database I use the GUI-based application phpMyAdmin, inside which are stored the tables that handle information about the clients, products and orders of a supermarket.
 
 <br>
 

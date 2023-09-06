@@ -4,7 +4,7 @@ Back-end made with Java using the Spring Framework. To manage its MySQL database
 
 <br>
 
-| [:camera: Screenshots](#screenshots) | [📖 Feature](#features) |
+| [:camera: Screenshots](#screenshots) | [📖 Features](#features) |
 | -------- | ----------- |
 
 <br>
@@ -12,7 +12,7 @@ Back-end made with Java using the Spring Framework. To manage its MySQL database
 
 ## Screenshots
 
-Coming soon
+Coming soon.
 
 <br>
 

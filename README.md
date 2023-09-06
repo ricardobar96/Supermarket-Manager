@@ -34,6 +34,7 @@ Coming soon.
 ## Relationships
 
 The following tables populate the app's database:
+<br>
 
 * **Client**: Which stores client's personal information.
 <br>

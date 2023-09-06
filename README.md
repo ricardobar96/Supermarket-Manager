@@ -1,3 +1,3 @@
 # Supermarket-Manager
 
-Back-end made with the Spring Framework for Java web development.
+Back-end made with Java using the Spring Framework.

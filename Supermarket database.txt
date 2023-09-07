@@ -44,7 +44,7 @@ CREATE TABLE `detallepedido` (
 
 
 INSERT INTO `productos` VALUES (1, 'Pera', 0.90, 20),(2, 'Plátano', 0.50, 20);
-INSERT INTO `cliente` VALUES (1, 'rivaldo', 'C/ Plaza Mayor, 5', '$2a$10$zvuDxpKR.9xerEth4PzoDOySS8h2La5euRlVKEPabr9CkBqISnYGa'),(2, 'anita', 'C/ Molina, 7', '$2a$10$zvuDxpKR.9xerEth4PzoDOySS8h2La5euRlVKEPabr9CkBqISnYGa');
+INSERT INTO `cliente` VALUES (1, 'rivaldo', 'C/ Plaza Mayor, 5', '$2a$12$YA4OIbHyR8fCtDWGJBmHf.5GTlsDk/ZeYBRgD2aT/84gYpThMIui2'),(2, 'anita', 'C/ Molina, 7', '$2a$12$j0I8BzsyIGZpIrgOp6fUbOfJZWXxrcIcIqache4bq/Ogs31BawouC');
 INSERT INTO `pedidos` VALUES (1, 23434542354, 0, 1, 1, 'C/ Plaza Mayor, 5'),(2, 345345654354, 1, 1, 0, 'C/ Molina, 7');
 INSERT INTO `detallepedido` VALUES (1, 1, 1, 0.90, 1),(2, 2, 10, 0.50, 2);
 

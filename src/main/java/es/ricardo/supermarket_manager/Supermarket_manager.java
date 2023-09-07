@@ -21,10 +21,10 @@ import org.springframework.web.cors.CorsUtils;
 import es.ricardo.supermarket_manager.security.FiltroJWT;
 
 @SpringBootApplication
-public class SupermercadoApplication {
+public class Supermarket_manager {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SupermercadoApplication.class, args);
+		SpringApplication.run(Supermarket_manager.class, args);
 	}
 
 	@EnableGlobalMethodSecurity(prePostEnabled = true)

@@ -17,7 +17,7 @@ Coming soon.
 
 ## Features
 
-* **Client Management:** Maintains a database of clients, storing their personal information.
+* **Client Management:** Keeps a record of all clients and their personal information.
 <br>
  
 * **Product Management:** Offers a comprehensive list of all products available.
@@ -45,5 +45,5 @@ The following tables populate the app's database:
 * **Orders:** Which stores order's data.
 <br>
 
-* **Orders_detail:** It references the order and product on which is it based thanks to both product and order foreign keys.
+* **Orders_detail:** It references the order and product on which it is based thanks to both product and order foreign keys.
 <br>

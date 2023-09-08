@@ -1,6 +1,6 @@
 # Supermarket-Manager
 
-**Front-end** made with **React** and **Typescript** that offers to the users a GUI with which they can manage orders for existing products in a supermarket.
+**Front-end** made with **React** and **Typescript** that offers a GUI with which users can manage orders for existing products in a supermarket.
 <br>
 <br>
 **Back-end** made with **Java** using the **Spring Framework**.

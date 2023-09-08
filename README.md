@@ -1,12 +1,12 @@
 # Supermarket-Manager
 
-Front-end made with typescript that offers to the users a GUI with which they can manage orders for existing products in a supermarket.
+**Front-end** made with **typescript** that offers to the users a GUI with which they can manage orders for existing products in a supermarket.
 <br>
 <br>
-Back-end made with Java using the Spring Framework.
+**Back-end** made with **Java** using the **Spring Framework**.
 <br>
 <br>
-To manage its MySQL database I use the GUI-based application phpMyAdmin, inside which are stored the tables that handle information about the clients, products and orders of a supermarket.
+To manage its **MySQL database** I use the GUI-based application **phpMyAdmin**, inside which are stored the tables that handle information about the clients, products and orders of a supermarket.
 
 <br>
 

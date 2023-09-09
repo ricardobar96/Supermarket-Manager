@@ -55,10 +55,6 @@ public class Supermarket_manager {
 		.antMatchers("/api/v2/**").authenticated()
 		.anyRequest().authenticated();	   
  
-    	//excepción para no autenticado ( token no válido )
-    	//esta excepción no se desencadena para roles incorrectos
-    	//la usamos únicamente para personalizar el mensaje
-    	//e informar de por qué no se ha dejado pasar la request
     	http
     	 .exceptionHandling()
     	 .authenticationEntryPoint((request, response, e) ->
@@ -68,7 +64,7 @@ public class Supermarket_manager {
     	 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
     	 response.getWriter().write(new JSONObject()
     	 .put("timestamp", LocalDateTime.now())
-    	 .put("message", "token no correctamente autenticado")
+    	 .put("message", "invalid token")
     	 .toString());
     	 });
     	}

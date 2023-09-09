@@ -1,50 +1,50 @@
-DROP TABLE IF EXISTS `productos`;
+DROP TABLE IF EXISTS `products`;
 
-CREATE TABLE `productos` (
-  `idproducto` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) UNIQUE NOT NULL,
-  `preciounidad` DOUBLE NOT NULL,
+CREATE TABLE `products` (
+  `idProduct` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) UNIQUE NOT NULL,
+  `unitPrice` DOUBLE NOT NULL,
   `stock` int NOT NULL,
-  PRIMARY KEY (`idproducto`));
+  PRIMARY KEY (`idProduct`));
 
-DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS `clients`;
 
-CREATE TABLE `cliente` (
-  `idcliente` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) UNIQUE NOT NULL,
-  `direccion` varchar(100) NOT NULL,
+CREATE TABLE `clients` (
+  `idClient` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) UNIQUE NOT NULL,
+  `address` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  PRIMARY KEY (`idcliente`));
+  PRIMARY KEY (`idClient`));
 
-DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `orders`;
 
-CREATE TABLE `pedidos` (
-  `idpedido` int NOT NULL AUTO_INCREMENT,
-  `fecha` BIGINT NOT NULL,
-  `pagado` BIT NOT NULL,
-  `enviado` BIT NOT NULL,
-  `entregado` BIT NOT NULL,
-  `direccion_entrega` varchar(100) NOT NULL,
-  PRIMARY KEY (`idpedido`));
+CREATE TABLE `orders` (
+  `idOrder` int NOT NULL AUTO_INCREMENT,
+  `date` BIGINT NOT NULL,
+  `paid` BIT NOT NULL,
+  `sent` BIT NOT NULL,
+  `delivered` BIT NOT NULL,
+  `address_order` varchar(100) NOT NULL,
+  PRIMARY KEY (`idOrder`));
 
-DROP TABLE IF EXISTS `detallepedido`;
+DROP TABLE IF EXISTS `detailOrder`;
 
-CREATE TABLE `detallepedido` (
-  `iddetallepedido` int NOT NULL AUTO_INCREMENT,
-  `fkidpedido` int NOT NULL,
-  `cantidad` int NOT NULL,
-  `preciounidad` DOUBLE NOT NULL,
-  `fkidproducto` int NOT NULL,
-  PRIMARY KEY (`iddetallepedido`),
-  KEY `fkidpedido_idx` (`fkidpedido`),
-  KEY `fkidproducto_idx` (`fkidproducto`),
-  CONSTRAINT `fkidpedidoo` FOREIGN KEY (`fkidpedido`) REFERENCES `pedidos` (`idpedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fkidproductoo` FOREIGN KEY (`fkidproducto`) REFERENCES `productos` (`idproducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `detailOrder` (
+  `idDetailOrder` int NOT NULL AUTO_INCREMENT,
+  `fkIdOrder` int NOT NULL,
+  `quantity` int NOT NULL,
+  `unitPrice` DOUBLE NOT NULL,
+  `fkIdProduct` int NOT NULL,
+  PRIMARY KEY (`idDetailOrder`),
+  KEY `fkIdOrder_idx` (`fkIdOrder`),
+  KEY `fkIdProduct_idx` (`fkIdProduct`),
+  CONSTRAINT `fkIdOrdero` FOREIGN KEY (`fkIdOrder`) REFERENCES `orders` (`idOrder`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkidProducto` FOREIGN KEY (`fkIdProduct`) REFERENCES `products` (`idProduct`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 
-INSERT INTO `productos` VALUES (1, 'Pera', 0.90, 20),(2, 'Plátano', 0.50, 20);
-INSERT INTO `cliente` VALUES (1, 'rivaldo', 'C/ Plaza Mayor, 5', '$2a$12$YA4OIbHyR8fCtDWGJBmHf.5GTlsDk/ZeYBRgD2aT/84gYpThMIui2'),(2, 'anita', 'C/ Molina, 7', '$2a$12$j0I8BzsyIGZpIrgOp6fUbOfJZWXxrcIcIqache4bq/Ogs31BawouC');
-INSERT INTO `pedidos` VALUES (1, 23434542354, 0, 1, 1, 'C/ Plaza Mayor, 5'),(2, 345345654354, 1, 1, 0, 'C/ Molina, 7');
-INSERT INTO `detallepedido` VALUES (1, 1, 1, 0.90, 1),(2, 2, 10, 0.50, 2);
+INSERT INTO `products` VALUES (1, 'Pear', 0.90, 20),(2, 'Banana', 0.50, 20);
+INSERT INTO `clients` VALUES (1, 'rivaldo', 'C/ Plaza Mayor, 5', '$2a$12$YA4OIbHyR8fCtDWGJBmHf.5GTlsDk/ZeYBRgD2aT/84gYpThMIui2'),(2, 'anita', 'C/ Molina, 7', '$2a$12$j0I8BzsyIGZpIrgOp6fUbOfJZWXxrcIcIqache4bq/Ogs31BawouC');
+INSERT INTO `orders` VALUES (1, 23434542354, 0, 1, 1, 'C/ Plaza Mayor, 5'),(2, 345345654354, 1, 1, 0, 'C/ Molina, 7');
+INSERT INTO `detailOrder` VALUES (1, 1, 1, 0.90, 1),(2, 2, 10, 0.50, 2);
 

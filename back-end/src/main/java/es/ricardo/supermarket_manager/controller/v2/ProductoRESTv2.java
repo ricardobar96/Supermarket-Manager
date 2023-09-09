@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.ricardo.supermarket_manager.dto.ProductoDTO;
-import es.ricardo.supermarket_manager.entities.DetailOrder;
-import es.ricardo.supermarket_manager.entities.Product;
+import es.ricardo.supermarket_manager.entities.Detallepedido;
+import es.ricardo.supermarket_manager.entities.Producto;
 import es.ricardo.supermarket_manager.services.DetallepedidoService;
 import es.ricardo.supermarket_manager.services.ProductoService;
 
@@ -36,17 +36,17 @@ public class ProductoRESTv2 {
 	DetallepedidoService detallepedidosService;
 	
 	@GetMapping("")
-	public List<Product> getAll(){
-		ArrayList<Product> productos = new ArrayList<Product>();
+	public List<Producto> getAll(){
+		ArrayList<Producto> productos = new ArrayList<Producto>();
 		productosService
 		.findAll()
-		.forEach(p -> productos.add((Product) p) );
+		.forEach(p -> productos.add((Producto) p) );
 		return productos;
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getProductoById(@PathVariable Integer id){
-		Optional<Product> productoOPT = productosService.findById(id);
+		Optional<Producto> productoOPT = productosService.findById(id);
 		if (productoOPT.isPresent()) {
 			return ResponseEntity.ok(productoOPT);
 		} else {
@@ -57,10 +57,10 @@ public class ProductoRESTv2 {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Integer id){
-		Optional<Product> productoOPT = productosService.findById(id);
+		Optional<Producto> productoOPT = productosService.findById(id);
 		
 		if(productoOPT.isPresent()) {
-			for (DetailOrder d : productoOPT.get().getDetailOrder()) {
+			for (Detallepedido d : productoOPT.get().getDetallepedidos()) {
 				detallepedidosService.delete(d);
 			}
 			productosService.deleteById(id);
@@ -72,9 +72,9 @@ public class ProductoRESTv2 {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody ProductoDTO productoDto){
-		Product p = new Product();
-		p.setName(productoDto.getNombre());
-		p.setUnitPrice(productoDto.getPreciounidad());
+		Producto p = new Producto();
+		p.setNombre(productoDto.getNombre());
+		p.setPreciounidad(productoDto.getPreciounidad());
 		
 		p.setStock(productoDto.getStock());
 		/*
@@ -91,15 +91,15 @@ public class ProductoRESTv2 {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody ProductoDTO productoDto){
-		Optional<Product> productoOPT = productosService.findById(id);
+		Optional<Producto> productoOPT = productosService.findById(id);
 		if(productoOPT.isPresent()) {
-			Product p = productoOPT.get();
+			Producto p = productoOPT.get();
 
 			if(productoDto.getNombre()!=null) {
-				p.setName(productoDto.getNombre());
+				p.setNombre(productoDto.getNombre());
 			}
 			if(productoDto.getPreciounidad()>0) {
-				p.setUnitPrice(productoDto.getPreciounidad());
+				p.setPreciounidad(productoDto.getPreciounidad());
 			}	
 			
 			if(productoDto.getStock()>0) {

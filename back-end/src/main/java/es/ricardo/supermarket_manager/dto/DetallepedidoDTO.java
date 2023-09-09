@@ -1,8 +1,8 @@
 package es.ricardo.supermarket_manager.dto;
 
-import es.ricardo.supermarket_manager.entities.DetailOrder;
-import es.ricardo.supermarket_manager.entities.Order;
-import es.ricardo.supermarket_manager.entities.Product;
+import es.ricardo.supermarket_manager.entities.Detallepedido;
+import es.ricardo.supermarket_manager.entities.Pedido;
+import es.ricardo.supermarket_manager.entities.Producto;
 
 public class DetallepedidoDTO {
 	private int iddetallepedido;
@@ -11,21 +11,21 @@ public class DetallepedidoDTO {
 
 	private double preciounidad;
 	
-	private Order pedido;
+	private Pedido pedido;
 	
-	private Product producto;
+	private Producto producto;
 
 	public DetallepedidoDTO() {
 		super();
 	}
 
-	public DetallepedidoDTO(DetailOrder d) {
+	public DetallepedidoDTO(Detallepedido d) {
 		super();
-		this.iddetallepedido = d.getIdDetailOrder();
-		this.cantidad = d.getQuantity();
-		this.preciounidad = d.getUnitPrice();
-		this.pedido = d.getOrder();
-		this.producto = d.getProduct();
+		this.iddetallepedido = d.getIddetallepedido();
+		this.cantidad = d.getCantidad();
+		this.preciounidad = d.getPreciounidad();
+		this.pedido = d.getPedido();
+		this.producto = d.getProducto();
 	}
 
 	public int getIddetallepedido() {
@@ -52,19 +52,19 @@ public class DetallepedidoDTO {
 		this.preciounidad = preciounidad;
 	}
 
-	public Order getPedido() {
+	public Pedido getPedido() {
 		return pedido;
 	}
 
-	public void setPedido(Order pedido) {
+	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
 
-	public Product getProducto() {
+	public Producto getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Product producto) {
+	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
 }

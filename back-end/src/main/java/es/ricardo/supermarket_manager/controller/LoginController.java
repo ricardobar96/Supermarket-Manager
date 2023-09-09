@@ -15,32 +15,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.ricardo.supermarket_manager.entities.Client;
+import es.ricardo.supermarket_manager.entities.Cliente;
 import es.ricardo.supermarket_manager.security.GestorDeJWT;
-import es.ricardo.supermarket_manager.services.ClientService;
+import es.ricardo.supermarket_manager.services.ClienteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value= "LoginController", description = "Controller that allows users authentication")
+@Api(value= "LoginController", description = "Controlador que permite la autenticación de los usuarios")
 @RestController
 public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@ApiOperation(value = "Detect if user's token is invalid when usign Form of type UrlEncoded")
+	/*  funciona el form urlencode */
+	@ApiOperation(value = "Detecta si el token del usuario no es válido al usar Form del tipo UrlEncoded")
 	@PostMapping(path = "/api/login", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public ResponseEntity<?> login(@RequestParam("name") String username, @RequestParam("password") String pwd) {
+		
+		
 		String token = getJWTToken(username,pwd);
 		
+		//token nulo si usuario/pass no es válido
 		if( token != null) {
 			return ResponseEntity.ok(token);
 		}else
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("user/pass invalid");
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("usuario/pass erróneos");
 		
 	}
 	
 	
-	static class UserJsonLogin{
+	static class UsuarioJsonLogin{
 		String name;
 		String password;
 		public String getName() { return name;};
@@ -50,35 +54,39 @@ public class LoginController {
 			
 	}
 	
-	@ApiOperation(value = "Detect if user's token is invalid when usign Form of type Json")
+	/* json post */
+	@ApiOperation(value = "Detecta si el token del usuario no es válido al usar Form del tipo Json")
 	@PostMapping(path = "/api/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> login(@RequestBody UserJsonLogin userJson) {		
-		String token = getJWTToken(userJson.name, userJson.password);
+	public ResponseEntity<?> login(@RequestBody UsuarioJsonLogin usuarioJson) {
 		
+		
+		String token = getJWTToken(usuarioJson.name, usuarioJson.password);
+		
+		//token nulo si usuario/pass no es válido
 		if( token != null) {
 			return ResponseEntity.ok(token);
 		}else
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("user/pass invalid");
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("usuario/pass erróneos");
 		
 	}	
 
 	@Autowired
-	ClientService clientService;
+	ClienteService clienteService;
 	
-	@ApiOperation(value = "Generates token in case login is valid")
+	@ApiOperation(value = "Genera el token en caso de ser correctos los datos introducidos en el login")
 	private String getJWTToken(String username, String passTextoPlanoRecibida) {
 		
 		String respuesta = null;
 		
 		GestorDeJWT gestorDeJWT = GestorDeJWT.getInstance();
 		
-		Client client = clientService.findByName(username);
+		Cliente cliente = clienteService.findByNombre(username);
 		        
         String passwordUsuarioEnHash = "";
         boolean autenticado = false;
         
-        if(client != null) { 
-        	passwordUsuarioEnHash = client.getPassword();
+        if(cliente != null) { 
+        	passwordUsuarioEnHash = cliente.getPassword();
         	
         	autenticado = BCrypt.checkpw(passTextoPlanoRecibida, passwordUsuarioEnHash);      	
         }  

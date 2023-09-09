@@ -1,6 +1,6 @@
 package es.ricardo.supermarket_manager.dto;
 
-import es.ricardo.supermarket_manager.entities.Cliente;
+import es.ricardo.supermarket_manager.entities.Client;
 
 public class ClienteDTO {
 	private int idcliente;
@@ -15,11 +15,11 @@ public class ClienteDTO {
 		super();
 	}
 
-	public ClienteDTO(Cliente c) {
+	public ClienteDTO(Client c) {
 		super();
-		this.idcliente = c.getIdcliente();
-		this.direccion = c.getDireccion();
-		this.nombre = c.getNombre();
+		this.idcliente = c.getIdClient();
+		this.direccion = c.getAddress();
+		this.nombre = c.getName();
 		this.password = c.getPassword();
 	}
 

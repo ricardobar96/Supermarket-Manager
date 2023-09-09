@@ -2,8 +2,8 @@ package es.ricardo.supermarket_manager.dto;
 
 import java.util.List;
 
-import es.ricardo.supermarket_manager.entities.Detallepedido;
-import es.ricardo.supermarket_manager.entities.Producto;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
+import es.ricardo.supermarket_manager.entities.Product;
 
 public class ProductoDTO {
 	private int idproducto;
@@ -14,19 +14,19 @@ public class ProductoDTO {
 
 	private int stock;
 	
-	private List<Detallepedido> detallepedidos;
+	private List<DetailOrder> detallepedidos;
 
 	public ProductoDTO() {
 		super();
 	}
 
-	public ProductoDTO(Producto p) {
+	public ProductoDTO(Product p) {
 		super();
-		this.idproducto = p.getIdproducto();
-		this.nombre = p.getNombre();
-		this.preciounidad = p.getPreciounidad();
+		this.idproducto = p.getIdProduct();
+		this.nombre = p.getName();
+		this.preciounidad = p.getUnitPrice();
 		this.stock = p.getStock();
-		this.detallepedidos = p.getDetallepedidos();
+		this.detallepedidos = p.getDetailOrder();
 	}
 
 	public int getIdproducto() {
@@ -61,11 +61,11 @@ public class ProductoDTO {
 		this.stock = stock;
 	}
 
-	public List<Detallepedido> getDetallepedidos() {
+	public List<DetailOrder> getDetallepedidos() {
 		return detallepedidos;
 	}
 
-	public void setDetallepedidos(List<Detallepedido> detallepedidos) {
+	public void setDetallepedidos(List<DetailOrder> detallepedidos) {
 		this.detallepedidos = detallepedidos;
 	}
 	

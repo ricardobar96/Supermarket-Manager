@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.ricardo.supermarket_manager.entities.Producto;
+import es.ricardo.supermarket_manager.entities.Product;
 import es.ricardo.supermarket_manager.repositories.ProductoRepository;
 
 @Service
-public class ProductoService implements GenericService<Producto,Integer> {
+public class ProductoService implements GenericService<Product,Integer> {
 
 	
 	@Autowired
@@ -20,28 +20,28 @@ public class ProductoService implements GenericService<Producto,Integer> {
 	
 	@Transactional(readOnly=true)
 	@Override
-	public Iterable<Producto> findAll() {
+	public Iterable<Product> findAll() {
 		
 		return productoRepository.findAll();
 	}
 
 	@Transactional(readOnly=true)
 	@Override
-	public Page<Producto> findAll(Pageable page) {
+	public Page<Product> findAll(Pageable page) {
 		
 		return productoRepository.findAll(page);
 	}
 
 	@Transactional(readOnly=true)
 	@Override
-	public Optional<Producto> findById(Integer id) {
+	public Optional<Product> findById(Integer id) {
 		
 		return productoRepository.findById(id);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public Producto save(Producto objeto) {
+	public Product save(Product objeto) {
 
 		return productoRepository.save(objeto);
 	}
@@ -55,7 +55,7 @@ public class ProductoService implements GenericService<Producto,Integer> {
 
 	@Transactional(readOnly = false)
 	@Override
-	public void delete(Producto entity) {
+	public void delete(Product entity) {
 
 		productoRepository.delete(entity);
 		

@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.ricardo.supermarket_manager.dto.PedidoDTO;
 import es.ricardo.supermarket_manager.dto.ProductoDTO;
-import es.ricardo.supermarket_manager.entities.Cliente;
-import es.ricardo.supermarket_manager.entities.Detallepedido;
-import es.ricardo.supermarket_manager.entities.Pedido;
-import es.ricardo.supermarket_manager.entities.Producto;
-import es.ricardo.supermarket_manager.services.ClienteService;
+import es.ricardo.supermarket_manager.entities.Client;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
+import es.ricardo.supermarket_manager.entities.Order;
+import es.ricardo.supermarket_manager.entities.Product;
+import es.ricardo.supermarket_manager.services.ClientService;
 import es.ricardo.supermarket_manager.services.DetallepedidoService;
 import es.ricardo.supermarket_manager.services.PedidoService;
 import es.ricardo.supermarket_manager.services.ProductoService;
@@ -44,29 +44,29 @@ public class PedidoRESTv2 {
 	DetallepedidoService detallepedidosService;
 	
 	@Autowired
-	ClienteService clientesService;
+	ClientService clientesService;
 	
-	public Cliente getClienteLogged() {
+	public Client getClienteLogged() {
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication authentication = context.getAuthentication();
 		String name = authentication.getName();
-		return clientesService.findByNombre(name);
+		return clientesService.findByName(name);
 	}
 
 	
 	@GetMapping("")
-	public List<Pedido> getAll(){
-		Cliente logged = getClienteLogged();
-		String nombreL = logged.getNombre();
+	public List<Order> getAll(){
+		Client logged = getClienteLogged();
+		String nameL = logged.getName();
 		
-		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+		ArrayList<Order> pedidos = new ArrayList<Order>();
 		pedidosService
 		.findAll()
-		.forEach(p -> pedidos.add((Pedido) p) );
+		.forEach(p -> pedidos.add((Order) p) );
 		
-		ArrayList<Pedido> pedidosCliente = new ArrayList<Pedido>();
-		for (Pedido p : pedidos) {
-			if(p.getCliente().getNombre().equals(nombreL)) {
+		ArrayList<Order> pedidosCliente = new ArrayList<Order>();
+		for (Order p : pedidos) {
+			if(p.getClient().getName().equals(nameL)) {
 				pedidosCliente.add(p);
 			}
 		}
@@ -75,12 +75,12 @@ public class PedidoRESTv2 {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getPedidoById(@PathVariable Integer id){
-		Cliente logged = getClienteLogged();
-		String nombreL = logged.getNombre();
+		Client logged = getClienteLogged();
+		String nameL = logged.getName();
 		
-		Optional<Pedido> pedidoOPT = pedidosService.findById(id);
+		Optional<Order> pedidoOPT = pedidosService.findById(id);
 		if (pedidoOPT.isPresent()) {
-			if(pedidoOPT.get().getCliente().getNombre().equals(nombreL)) {
+			if(pedidoOPT.get().getClient().getName().equals(nameL)) {
 				return ResponseEntity.ok(pedidoOPT);
 			}
 			else {
@@ -94,10 +94,10 @@ public class PedidoRESTv2 {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Integer id){
-		Optional<Pedido> pedidoOPT = pedidosService.findById(id);
+		Optional<Order> pedidoOPT = pedidosService.findById(id);
 		
 		if(pedidoOPT.isPresent()) {
-			for (Detallepedido d : pedidoOPT.get().getDetallepedidos()) {
+			for (DetailOrder d : pedidoOPT.get().getDetailOrder()) {
 				detallepedidosService.delete(d);
 				//pedidoOPT.get().getDetallepedidos().remove(d);
 				//d.getPedido().removeDetallepedido(d);
@@ -111,58 +111,58 @@ public class PedidoRESTv2 {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody PedidoDTO pedidoDto){
-		Pedido p = new Pedido();
-		p.setDireccionEntrega(pedidoDto.getDireccionEntrega());
-		p.setEntregado(pedidoDto.getEntregado());
-		p.setEnviado(pedidoDto.getEnviado());
-		p.setPagado(pedidoDto.getPagado());
-	    p.setFecha(pedidoDto.getFecha());
-	    p.setCliente(pedidoDto.getCliente());
+		Order p = new Order();
+		p.setAddressOrder(pedidoDto.getDireccionEntrega());
+		p.setDelivered(pedidoDto.getEntregado());
+		p.setSent(pedidoDto.getEnviado());
+		p.setPaid(pedidoDto.getPagado());
+	    p.setDate(pedidoDto.getFecha());
+	    p.setClient(pedidoDto.getCliente());
 	    
-	    for(Detallepedido d : pedidoDto.getDetallepedidos()) {
-	    	Optional<Detallepedido> optD = detallepedidosService.findById(d.getIddetallepedido());
-	    	optD.get().getPedido().addDetallepedido(d);
+	    for(DetailOrder d : pedidoDto.getDetallepedidos()) {
+	    	Optional<DetailOrder> optD = detallepedidosService.findById(d.getIdDetailOrder());
+	    	optD.get().getOrder().addDetailOrder(d);
 	    }
 
-		p.setDetallepedidos(pedidoDto.getDetallepedidos());
+		p.setDetailOrder(pedidoDto.getDetallepedidos());
 		pedidosService.save(p);
 		return ResponseEntity.ok().body(new PedidoDTO(p));
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody PedidoDTO pedidoDto){
-		Optional<Pedido> pedidoOPT = pedidosService.findById(id);
+		Optional<Order> pedidoOPT = pedidosService.findById(id);
 		if(pedidoOPT.isPresent()) {
-			Pedido p = pedidoOPT.get();
+			Order p = pedidoOPT.get();
 
 			if(pedidoDto.getDireccionEntrega()!=null) {
-				p.setDireccionEntrega(pedidoDto.getDireccionEntrega());
+				p.setAddressOrder(pedidoDto.getDireccionEntrega());
 			}
 			if(pedidoDto.getEntregado()==0 || pedidoDto.getEntregado()==1) {
-				p.setEntregado(pedidoDto.getEntregado());
+				p.setDelivered(pedidoDto.getEntregado());
 			}
 			if(pedidoDto.getEnviado()==0 || pedidoDto.getEnviado()==1) {
-				p.setEnviado(pedidoDto.getEnviado());
+				p.setSent(pedidoDto.getEnviado());
 			}
 			if(pedidoDto.getPagado()==0 || pedidoDto.getPagado()==1) {
-				p.setPagado(pedidoDto.getPagado());
+				p.setPaid(pedidoDto.getPagado());
 			}
 			if(pedidoDto.getDetallepedidos()!=null) {
-				for (Detallepedido d : pedidoOPT.get().getDetallepedidos()) {
+				for (DetailOrder d : pedidoOPT.get().getDetailOrder()) {
 					pedidoDto.getDetallepedidos().remove(d);
 				}
-				for (Detallepedido d : pedidoDto.getDetallepedidos()) {
-					Optional<Detallepedido> optDetalle = detallepedidosService.findById(d.getIddetallepedido());
-					optDetalle.get().getPedido().addDetallepedido(d);
+				for (DetailOrder d : pedidoDto.getDetallepedidos()) {
+					Optional<DetailOrder> optDetalle = detallepedidosService.findById(d.getIdDetailOrder());
+					optDetalle.get().getOrder().addDetailOrder(d);
 				}	
 
-				p.setDetallepedidos(pedidoDto.getDetallepedidos());
+				p.setDetailOrder(pedidoDto.getDetallepedidos());
 			}
 			if(pedidoDto.getFecha()!=null) {
-				p.setFecha(pedidoDto.getFecha());
+				p.setDate(pedidoDto.getFecha());
 			}
 			if(pedidoDto.getCliente()!=null) {
-				p.setCliente(pedidoDto.getCliente());
+				p.setClient(pedidoDto.getCliente());
 			}
 			
 			return ResponseEntity.ok(pedidosService.save(p));

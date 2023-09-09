@@ -9,11 +9,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.ricardo.supermarket_manager.entities.Detallepedido;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
 import es.ricardo.supermarket_manager.repositories.DetallepedidoRepository;
 
 @Service
-public class DetallepedidoService  implements GenericService<Detallepedido,Integer> {
+public class DetallepedidoService  implements GenericService<DetailOrder,Integer> {
 
 	
 	@Autowired
@@ -21,28 +21,28 @@ public class DetallepedidoService  implements GenericService<Detallepedido,Integ
 	
 	@Transactional(readOnly=true)
 	@Override
-	public Iterable<Detallepedido> findAll() {
+	public Iterable<DetailOrder> findAll() {
 		
 		return detallepedidoRepository.findAll();
 	}
 
 	@Transactional(readOnly=true)
 	@Override
-	public Page<Detallepedido> findAll(Pageable page) {
+	public Page<DetailOrder> findAll(Pageable page) {
 		
 		return detallepedidoRepository.findAll(page);
 	}
 
 	@Transactional(readOnly=true)
 	@Override
-	public Optional<Detallepedido> findById(Integer id) {
+	public Optional<DetailOrder> findById(Integer id) {
 		
 		return detallepedidoRepository.findById(id);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public Detallepedido save(Detallepedido objeto) {
+	public DetailOrder save(DetailOrder objeto) {
 
 		return detallepedidoRepository.save(objeto);
 	}
@@ -56,7 +56,7 @@ public class DetallepedidoService  implements GenericService<Detallepedido,Integ
 
 	@Transactional(readOnly = false)
 	@Override
-	public void delete(Detallepedido entity) {
+	public void delete(DetailOrder entity) {
 
 		detallepedidoRepository.delete(entity);
 		

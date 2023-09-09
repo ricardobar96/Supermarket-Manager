@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.ricardo.supermarket_manager.dto.ClienteDTO;
 import es.ricardo.supermarket_manager.dto.ProductoDTO;
-import es.ricardo.supermarket_manager.entities.Cliente;
-import es.ricardo.supermarket_manager.entities.Detallepedido;
-import es.ricardo.supermarket_manager.entities.Pedido;
-import es.ricardo.supermarket_manager.entities.Producto;
-import es.ricardo.supermarket_manager.services.ClienteService;
+import es.ricardo.supermarket_manager.entities.Client;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
+import es.ricardo.supermarket_manager.entities.Order;
+import es.ricardo.supermarket_manager.entities.Product;
+import es.ricardo.supermarket_manager.services.ClientService;
 import es.ricardo.supermarket_manager.services.DetallepedidoService;
 import es.ricardo.supermarket_manager.services.PedidoService;
 
@@ -35,7 +35,7 @@ public class ClienteRESTv2 {
 	private Logger logger = LoggerFactory.getLogger(ClienteRESTv2.class);
 	
 	@Autowired
-	ClienteService clientesService;
+	ClientService clientesService;
 	
 	@Autowired
 	PedidoService pedidosService;
@@ -44,17 +44,17 @@ public class ClienteRESTv2 {
 	DetallepedidoService detallepedidosService;
 	
 	@GetMapping("")
-	public List<Cliente> getAll(){
-		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	public List<Client> getAll(){
+		ArrayList<Client> clientes = new ArrayList<Client>();
 		clientesService
 		.findAll()
-		.forEach(p -> clientes.add((Cliente) p) );
+		.forEach(p -> clientes.add((Client) p) );
 		return clientes;
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getClienteById(@PathVariable Integer id){
-		Optional<Cliente> clienteOPT = clientesService.findById(id);
+		Optional<Client> clienteOPT = clientesService.findById(id);
 		if (clienteOPT.isPresent()) {
 			return ResponseEntity.ok(clienteOPT);
 		} else {
@@ -65,11 +65,11 @@ public class ClienteRESTv2 {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Integer id){
-		Optional<Cliente> clienteOPT = clientesService.findById(id);
+		Optional<Client> clienteOPT = clientesService.findById(id);
 		
 		if(clienteOPT.isPresent()) {
-			for (Pedido p : clienteOPT.get().getPedidos()) {
-				for (Detallepedido d : p.getDetallepedidos()) {
+			for (Order p : clienteOPT.get().getOrders()) {
+				for (DetailOrder d : p.getDetailOrder()) {
 					detallepedidosService.delete(d);
 				}
 				pedidosService.delete(p);
@@ -85,9 +85,9 @@ public class ClienteRESTv2 {
 	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDto){
 		String enhash = BCrypt.hashpw(clienteDto.getPassword(), BCrypt.gensalt(10));
 		
-		Cliente c = new Cliente();
-		c.setDireccion(clienteDto.getDireccion());
-		c.setNombre(clienteDto.getNombre());
+		Client c = new Client();
+		c.setAddress(clienteDto.getDireccion());
+		c.setName(clienteDto.getNombre());
 		c.setPassword(enhash);
 
 		clientesService.save(c);
@@ -96,16 +96,16 @@ public class ClienteRESTv2 {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody ClienteDTO clienteDto){
-		Optional<Cliente> clienteOPT = clientesService.findById(id);
+		Optional<Client> clienteOPT = clientesService.findById(id);
 		if(clienteOPT.isPresent()) {
 			String enhash = BCrypt.hashpw(clienteDto.getPassword(), BCrypt.gensalt(10));
-			Cliente c = clienteOPT.get();
+			Client c = clienteOPT.get();
 
 			if(clienteDto.getNombre()!=null) {
-				c.setNombre(clienteDto.getNombre());
+				c.setName(clienteDto.getNombre());
 			}
 			if(clienteDto.getDireccion()!=null) {
-				c.setDireccion(clienteDto.getDireccion());
+				c.setAddress(clienteDto.getDireccion());
 			}
 			if(clienteDto.getPassword()!=null) {
 				c.setPassword(enhash);

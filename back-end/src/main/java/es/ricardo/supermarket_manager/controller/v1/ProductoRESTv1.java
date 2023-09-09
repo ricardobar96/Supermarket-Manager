@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.ricardo.supermarket_manager.entities.Producto;
+import es.ricardo.supermarket_manager.entities.Product;
 import es.ricardo.supermarket_manager.services.ProductoService;
 
 	@RestController
@@ -28,17 +28,17 @@ import es.ricardo.supermarket_manager.services.ProductoService;
 		@Autowired
 		ProductoService productosService;
 		@GetMapping("")
-		public List<Producto> getAll(){
-			ArrayList<Producto> productos = new ArrayList<Producto>();
+		public List<Product> getAll(){
+			ArrayList<Product> productos = new ArrayList<Product>();
 			productosService
 			.findAll()
-			.forEach(p -> productos.add((Producto) p) );
+			.forEach(p -> productos.add((Product) p) );
 			return productos;
 		}
 		
 		@GetMapping("/{id}")
 		public ResponseEntity<?> getProductoById(@PathVariable Integer id){
-			Optional<Producto> productoOPT = productosService.findById(id);
+			Optional<Product> productoOPT = productosService.findById(id);
 			if (productoOPT.isPresent()) {
 				return ResponseEntity.ok(productoOPT);
 			} else {

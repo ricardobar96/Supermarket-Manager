@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.ricardo.supermarket_manager.dto.DetallepedidoDTO;
-import es.ricardo.supermarket_manager.entities.Cliente;
-import es.ricardo.supermarket_manager.entities.Detallepedido;
-import es.ricardo.supermarket_manager.entities.Pedido;
-import es.ricardo.supermarket_manager.services.ClienteService;
+import es.ricardo.supermarket_manager.entities.Client;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
+import es.ricardo.supermarket_manager.entities.Order;
+import es.ricardo.supermarket_manager.services.ClientService;
 import es.ricardo.supermarket_manager.services.DetallepedidoService;
 
 @RestController
@@ -37,28 +37,28 @@ public class DetallepedidoRESTv2 {
 	DetallepedidoService detallepedidosService;
 	
 	@Autowired
-	ClienteService clientesService;
+	ClientService clientesService;
 	
-	public Cliente getClienteLogged() {
+	public Client getClienteLogged() {
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication authentication = context.getAuthentication();
 		String name = authentication.getName();
-		return clientesService.findByNombre(name);
+		return clientesService.findByName(name);
 	}
 	
 	@GetMapping("")
-	public List<Detallepedido> getAll(){
-		Cliente logged = getClienteLogged();
-		String nombreL = logged.getNombre();
+	public List<DetailOrder> getAll(){
+		Client logged = getClienteLogged();
+		String nameL = logged.getName();
 		
-		ArrayList<Detallepedido> detallepedidos = new ArrayList<Detallepedido>();
+		ArrayList<DetailOrder> detallepedidos = new ArrayList<DetailOrder>();
 		detallepedidosService
 		.findAll()
-		.forEach(p -> detallepedidos.add((Detallepedido) p) );
+		.forEach(p -> detallepedidos.add((DetailOrder) p) );
 		
-		ArrayList<Detallepedido> detallesCliente = new ArrayList<Detallepedido>();
-		for (Detallepedido d : detallepedidos) {
-			if(d.getPedido().getCliente().getNombre().equals(nombreL)) {
+		ArrayList<DetailOrder> detallesCliente = new ArrayList<DetailOrder>();
+		for (DetailOrder d : detallepedidos) {
+			if(d.getOrder().getClient().getName().equals(nameL)) {
 				detallesCliente.add(d);
 			}
 		}
@@ -68,12 +68,12 @@ public class DetallepedidoRESTv2 {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDetallepedidoById(@PathVariable Integer id){
-		Cliente logged = getClienteLogged();
-		String nombreL = logged.getNombre();
+		Client logged = getClienteLogged();
+		String nameL = logged.getName();
 		
-		Optional<Detallepedido> detalleOPT = detallepedidosService.findById(id);
+		Optional<DetailOrder> detalleOPT = detallepedidosService.findById(id);
 		if (detalleOPT.isPresent()) {
-			if(detalleOPT.get().getPedido().getCliente().getNombre().equals(nombreL)) {
+			if(detalleOPT.get().getOrder().getClient().getName().equals(nameL)) {
 				return ResponseEntity.ok(detalleOPT);
 			}
 			else {
@@ -87,7 +87,7 @@ public class DetallepedidoRESTv2 {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Integer id){
-		Optional<Detallepedido> detalleOPT = detallepedidosService.findById(id);
+		Optional<DetailOrder> detalleOPT = detallepedidosService.findById(id);
 		
 		if(detalleOPT.isPresent()) {
 			detallepedidosService.deleteById(id);
@@ -99,11 +99,11 @@ public class DetallepedidoRESTv2 {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody DetallepedidoDTO detalleDto){
-		Detallepedido d = new Detallepedido();
-		d.setCantidad(detalleDto.getCantidad());
-		d.setPreciounidad(detalleDto.getPreciounidad());
-		d.setPedido(detalleDto.getPedido());
-		d.setProducto(detalleDto.getProducto());
+		DetailOrder d = new DetailOrder();
+		d.setQuantity(detalleDto.getCantidad());
+		d.setUnitPrice(detalleDto.getPreciounidad());
+		d.setOrder(detalleDto.getPedido());
+		d.setProduct(detalleDto.getProducto());
 
 		detallepedidosService.save(d);
 		return ResponseEntity.ok().body(new DetallepedidoDTO(d));
@@ -111,23 +111,23 @@ public class DetallepedidoRESTv2 {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody DetallepedidoDTO detalleDto){
-		Optional<Detallepedido> detalleOPT = detallepedidosService.findById(id);
+		Optional<DetailOrder> detalleOPT = detallepedidosService.findById(id);
 		if(detalleOPT.isPresent()) {
-			Detallepedido d = detalleOPT.get();
+			DetailOrder d = detalleOPT.get();
 
 			if(detalleDto.getCantidad()>-1) {
-				d.setCantidad(detalleDto.getCantidad());
+				d.setQuantity(detalleDto.getCantidad());
 			}
 			if(detalleDto.getPreciounidad()>0) {
-				d.setPreciounidad(detalleDto.getPreciounidad());
+				d.setUnitPrice(detalleDto.getPreciounidad());
 			}	
 			
 			if(detalleDto.getPedido()!=null) {
-				d.setPedido(detalleDto.getPedido());
+				d.setOrder(detalleDto.getPedido());
 			}	
 			
 			if(detalleDto.getProducto()!=null) {
-				d.setProducto(detalleDto.getProducto());
+				d.setProduct(detalleDto.getProducto());
 			}	
 			
 			return ResponseEntity.ok(detallepedidosService.save(d));

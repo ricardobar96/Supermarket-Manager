@@ -3,9 +3,9 @@ package es.ricardo.supermarket_manager.dto;
 import java.util.Date;
 import java.util.List;
 
-import es.ricardo.supermarket_manager.entities.Cliente;
-import es.ricardo.supermarket_manager.entities.Detallepedido;
-import es.ricardo.supermarket_manager.entities.Pedido;
+import es.ricardo.supermarket_manager.entities.Client;
+import es.ricardo.supermarket_manager.entities.DetailOrder;
+import es.ricardo.supermarket_manager.entities.Order;
 
 public class PedidoDTO {
 	private int idpedido;
@@ -20,24 +20,24 @@ public class PedidoDTO {
 
 	private byte pagado;
 	
-	private List<Detallepedido> detallepedidos;
+	private List<DetailOrder> detallepedidos;
 	
-	private Cliente cliente;
+	private Client cliente;
 
 	public PedidoDTO() {
 		super();
 	}
 
-	public PedidoDTO(Pedido p) {
+	public PedidoDTO(Order p) {
 		super();
-		this.idpedido = p.getIdpedido();
-		this.direccionEntrega = p.getDireccionEntrega();
-		this.entregado = p.getEntregado();
-		this.enviado = p.getEnviado();
-		this.fecha = p.getFecha().getTime();
-		this.pagado = p.getPagado();
-		this.detallepedidos = p.getDetallepedidos();
-		this.cliente = p.getCliente();
+		this.idpedido = p.getIdOrder();
+		this.direccionEntrega = p.getAddressOrder();
+		this.entregado = p.getDelivered();
+		this.enviado = p.getSent();
+		this.fecha = p.getDate().getTime();
+		this.pagado = p.getPaid();
+		this.detallepedidos = p.getDetailOrder();
+		this.cliente = p.getClient();
 	}
 
 	public int getIdpedido() {
@@ -88,19 +88,19 @@ public class PedidoDTO {
 		this.pagado = pagado;
 	}
 
-	public List<Detallepedido> getDetallepedidos() {
+	public List<DetailOrder> getDetallepedidos() {
 		return detallepedidos;
 	}
 
-	public void setDetallepedidos(List<Detallepedido> detallepedidos) {
+	public void setDetallepedidos(List<DetailOrder> detallepedidos) {
 		this.detallepedidos = detallepedidos;
 	}
 
-	public Cliente getCliente() {
+	public Client getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Client cliente) {
 		this.cliente = cliente;
 	}
 }

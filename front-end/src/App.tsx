@@ -11,6 +11,8 @@ import ManagePedido_v2 from './v2/ManagePedido_v2';
 import CreatePedido from './v2/CrearPedido';
 import Detalles_v2 from './v2/Detalle_v2';
 import ManageDetalle_v2 from './v2/ManageDetalle_v2';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 interface IProps { }
 interface IState { }
@@ -84,7 +86,7 @@ const App = () => {
 const Navbar = () => {
 
   return (
-    <nav>
+    <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <Link to="/"> Login </Link> &nbsp;
       <Link to="/logout"> Logout </Link> &nbsp;
       <br />

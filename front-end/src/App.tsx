@@ -12,7 +12,6 @@ import CreatePedido from './v2/CrearPedido';
 import Detalles_v2 from './v2/Detalle_v2';
 import ManageDetalle_v2 from './v2/ManageDetalle_v2';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 
 interface IProps { }
 interface IState { }
@@ -32,7 +31,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <h1>Aplicación Supermercado</h1>
+      <h1>Supermarket Manager</h1>
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -86,20 +85,44 @@ const App = () => {
 const Navbar = () => {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white">
-      <Link to="/"> Login </Link> &nbsp;
-      <Link to="/logout"> Logout </Link> &nbsp;
-      <br />
-      <br />
-      <Link to="/api/v1/productos"> Productos (v1) </Link> &nbsp;
-      <br />
-      <br />
-      <Link to="/api/v2/productos"> Productos (v2) </Link> &nbsp;
-      <Link to="/api/v2/pedidos"> Pedidos (v2) </Link> &nbsp;
-      <Link to="/api/v2/detallepedidos"> Detallepedidos (v2) </Link> &nbsp;
-      <br />
-      <br />
-    </nav>
+    <header className="container-fluid bg-dark shadow">
+        <nav className="navbar navbar-expand-lg navbar-dark mx-5 px-4 py-2">
+          <Link to="/" className="navbar-brand text-white"> Home </Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#list"
+            aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="dropdown show">
+            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownLinkProducts" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Products
+            </a>
+
+            <div className="dropdown-menu" aria-labelledby="dropdownLinkProducts">
+              <Link to="/api/v1/productos" className="dropdown-item">Catalog</Link>
+              <Link to="/api/v2/productos" className="dropdown-item">Manage products</Link>
+            </div>
+          </div>
+
+          <div className="dropdown show">
+            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownLinkOrders" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Orders
+            </a>
+
+            <div className="dropdown-menu" aria-labelledby="dropdownLinkOrders">
+              <Link to="/api/v2/pedidos" className="dropdown-item">Order a product</Link>
+              <Link to="/api/v2/detallepedidos" className="dropdown-item">Check your order</Link>
+            </div>
+          </div>
+
+          <Link to="/" className="navbar-brand text-white"> Login </Link>
+          <Link to="/logout" className="navbar-brand text-white"> Logout </Link>
+          
+      </nav>
+    </header>
+    
   );
 }
 export default App;

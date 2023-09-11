@@ -12,6 +12,7 @@ import CreatePedido from './v2/CrearPedido';
 import Detalles_v2 from './v2/Detalle_v2';
 import ManageDetalle_v2 from './v2/ManageDetalle_v2';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Dropdown } from 'react-bootstrap';
 
 interface IProps { }
 interface IState { }
@@ -93,32 +94,40 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="dropdown show">
-            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownLinkProducts" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <Container className='p-4'>  
+          <Dropdown>  
+            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
               Products
-            </a>
+            </Dropdown.Toggle>  
+            
+            <Dropdown.Menu>  
+              <Dropdown.Item href="/api/v1/productos">Catalog</Dropdown.Item>  
+              <Dropdown.Item href="/api/v2/productos">Manage products</Dropdown.Item>  
+            </Dropdown.Menu>  
+          </Dropdown>  
 
-            <div className="dropdown-menu" aria-labelledby="dropdownLinkProducts">
-              <Link to="/api/v1/productos" className="dropdown-item">Catalog</Link>
-              <Link to="/api/v2/productos" className="dropdown-item">Manage products</Link>
-            </div>
-          </div>
-
-          <div className="dropdown show">
-            <a className="btn btn-secondary dropdown-toggle" role="button" id="dropdownLinkOrders" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <Dropdown>  
+            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
               Orders
-            </a>
+            </Dropdown.Toggle>  
+            
+            <Dropdown.Menu>  
+              <Dropdown.Item href="/api/v2/pedidos">Create order</Dropdown.Item>  
+              <Dropdown.Item href="/api/v2/detallepedidos">Check order</Dropdown.Item>  
+            </Dropdown.Menu>  
+          </Dropdown>  
+          </Container> 
 
-            <div className="dropdown-menu" aria-labelledby="dropdownLinkOrders">
-              <Link to="/api/v2/pedidos" className="dropdown-item">Order a product</Link>
-              <Link to="/api/v2/detallepedidos" className="dropdown-item">Check your order</Link>
-            </div>
-          </div>
-
-          <Link to="/" className="navbar-brand text-white"> Login </Link>
-          <Link to="/logout" className="navbar-brand text-white"> Logout </Link>
+          <Dropdown>  
+            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
+              User
+            </Dropdown.Toggle>  
+            
+            <Dropdown.Menu>  
+              <Dropdown.Item href="/">Login</Dropdown.Item>  
+              <Dropdown.Item href="/logout">Logout</Dropdown.Item>  
+            </Dropdown.Menu>  
+          </Dropdown> 
           
       </nav>
     </header>

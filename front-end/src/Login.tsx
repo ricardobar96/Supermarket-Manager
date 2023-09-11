@@ -34,14 +34,13 @@ export default function Inicio() {
         <main>
             <section id="form" className="text-center">
                 <h1 className="lead display-3 text-danger pt-5 fw-bold">Login</h1>
-                <p className="mt-4 fw-medium text-muted">Enter your username and password</p>
-                <br />
-                <form onSubmit={login} style={{ textAlign: "center", }}>
-                    Nombre: <input type="text" ref={nombreUser} /><br />
+                <p className="mt-4 pb-2 fw-medium text-muted">Enter your username and password</p>
+                <form onSubmit={login}>
+                    Username: <input type="text" ref={nombreUser} className="border border-primary rounded mb-3" />
                     <br />
-                    Password: <input type="password" ref={passwordUser} /><br />
+                    Password: <input type="password" ref={passwordUser} className="border border-primary rounded mb-3"/>
                     <br />
-                    <button type="submit">Login </button>
+                    <button type="submit" className="btn btn-primary">Login </button>
                 </form>
             </section>
         </main>

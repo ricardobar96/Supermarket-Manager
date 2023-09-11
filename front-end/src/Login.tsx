@@ -31,16 +31,20 @@ export default function Inicio() {
 
 
     return (
-        <main>
+        <main className="w-50 mx-auto rounded" style={{background: "#d6eaf8"}}>
             <section id="form" className="text-center">
-                <h1 className="lead display-3 text-danger pt-5 fw-bold">Login</h1>
+                <h1 className="lead display-3 text-primary pt-5 fw-bold">Login</h1>
                 <p className="mt-4 pb-2 fw-medium text-muted">Enter your username and password</p>
                 <form onSubmit={login}>
-                    Username: <input type="text" ref={nombreUser} className="border border-primary rounded mb-3" />
+                    <input type="text" ref={nombreUser} className="text-center border border-primary rounded mb-3"
+                     placeholder="Username"/>
                     <br />
-                    Password: <input type="password" ref={passwordUser} className="border border-primary rounded mb-3"/>
+                    <input type="password" ref={passwordUser} className="text-center border border-primary rounded mb-3" 
+                    placeholder="Password"/>
                     <br />
-                    <button type="submit" className="btn btn-primary">Login </button>
+                    <button type="submit" className="btn btn-outline-light btn-primary btn-modified w-25 mt-3 mb-5">
+                        <span className="fw-bold">Login</span> 
+                    </button>
                 </form>
             </section>
         </main>

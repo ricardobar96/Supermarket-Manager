@@ -32,7 +32,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <h1>Supermarket Manager</h1>
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -88,13 +87,12 @@ const Navbar = () => {
   return (
     <header className="container-fluid bg-dark shadow">
         <nav className="navbar navbar-expand-lg navbar-dark mx-5 px-4 py-2">
-          <Link to="/" className="navbar-brand text-white"> Home </Link>
+          <Link to="/" className="navbar-brand text-white"> Supermarket Manager </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#list"
             aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <Container className='p-4'>  
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
               Products
@@ -106,6 +104,7 @@ const Navbar = () => {
             </Dropdown.Menu>  
           </Dropdown>  
 
+          <Container className='p-4'>  
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
               Orders

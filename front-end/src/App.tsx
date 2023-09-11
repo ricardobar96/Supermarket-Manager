@@ -85,7 +85,7 @@ const App = () => {
 const Navbar = () => {
 
   return (
-    <header className="container-fluid navbar-light bg-secondary shadow">
+    <header className="container-fluid navbar-light bg-secondary shadow mb-5">
         <nav className="navbar navbar-expand-lg mx-5 px-4 py-2">
           <a className="navbar-brand px-4" href="/">
             <img src="https://e7.pngegg.com/pngimages/155/3/png-clipart-sota-roda-sommardrommar-concrete-construction-augers-product-supermarket-logo-text-supermarket.png" width="50" height="50" 

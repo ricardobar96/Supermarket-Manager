@@ -6,9 +6,9 @@ export default function Logout() {
 
     return (
         <>
-            <h2 style={{ textAlign: "center", }}>Cierre de sesión</h2>
+            <h2 style={{ textAlign: "center", }}>Log out</h2>
             <br />
-            <p style={{ textAlign: "center", }}>Usted acaba de finalizar la sesión</p>
+            <p style={{ textAlign: "center", }}>You just logged out</p>
             <br />
         </>
     )

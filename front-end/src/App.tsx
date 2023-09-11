@@ -12,6 +12,7 @@ import CreatePedido from './v2/CrearPedido';
 import Detalles_v2 from './v2/Detalle_v2';
 import ManageDetalle_v2 from './v2/ManageDetalle_v2';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import { Container, Dropdown } from 'react-bootstrap';
 
 interface IProps { }
@@ -95,7 +96,7 @@ const Navbar = () => {
 
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
-              Products
+              <i className="fa fa-shopping-cart"></i>
             </Dropdown.Toggle>  
             
             <Dropdown.Menu>  
@@ -107,7 +108,7 @@ const Navbar = () => {
           <Container className='p-4'>  
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
-              Orders
+              <i className="fa fa-truck fa-fw"></i>
             </Dropdown.Toggle>  
             
             <Dropdown.Menu>  
@@ -119,7 +120,7 @@ const Navbar = () => {
 
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
-              User
+              <i className="fa fa-user fa-fw"></i>
             </Dropdown.Toggle>  
             
             <Dropdown.Menu>  

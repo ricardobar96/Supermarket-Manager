@@ -87,11 +87,11 @@ const Navbar = () => {
   return (
     <header className="container-fluid bg-dark shadow">
         <nav className="navbar navbar-expand-lg navbar-dark mx-5 px-4 py-2">
-          <Link to="/" className="navbar-brand text-white"> Supermarket Manager </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#list"
-            aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <a className="navbar-brand" href="/">
+            <img src="https://e7.pngegg.com/pngimages/155/3/png-clipart-sota-roda-sommardrommar-concrete-construction-augers-product-supermarket-logo-text-supermarket.png" width="40" height="40" 
+            className="d-inline-block align-top rounded-circle" alt=""></img>
+             &nbsp;&nbsp;SManager
+          </a>
 
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  

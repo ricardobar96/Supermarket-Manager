@@ -85,16 +85,16 @@ const App = () => {
 const Navbar = () => {
 
   return (
-    <header className="container-fluid bg-dark shadow">
-        <nav className="navbar navbar-expand-lg navbar-dark mx-5 px-4 py-2">
-          <a className="navbar-brand" href="/">
-            <img src="https://e7.pngegg.com/pngimages/155/3/png-clipart-sota-roda-sommardrommar-concrete-construction-augers-product-supermarket-logo-text-supermarket.png" width="40" height="40" 
+    <header className="container-fluid navbar-light bg-secondary shadow">
+        <nav className="navbar navbar-expand-lg mx-5 px-4 py-2">
+          <a className="navbar-brand px-4" href="/">
+            <img src="https://e7.pngegg.com/pngimages/155/3/png-clipart-sota-roda-sommardrommar-concrete-construction-augers-product-supermarket-logo-text-supermarket.png" width="50" height="50" 
             className="d-inline-block align-top rounded-circle" alt=""></img>
-             &nbsp;&nbsp;SManager
+             &nbsp;&nbsp;<span className='text-light'>SManager</span>
           </a>
 
           <Dropdown>  
-            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
+            <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
               Products
             </Dropdown.Toggle>  
             
@@ -106,7 +106,7 @@ const Navbar = () => {
 
           <Container className='p-4'>  
           <Dropdown>  
-            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
+            <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
               Orders
             </Dropdown.Toggle>  
             
@@ -118,7 +118,7 @@ const Navbar = () => {
           </Container> 
 
           <Dropdown>  
-            <Dropdown.Toggle variant="btn btn-secondary dropdown-toggle" id="dropdown-products">  
+            <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
               User
             </Dropdown.Toggle>  
             

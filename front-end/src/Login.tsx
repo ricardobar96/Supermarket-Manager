@@ -31,18 +31,19 @@ export default function Inicio() {
 
 
     return (
-        <>
-            <h2 style={{ textAlign: "center", }}>Aplicación Supermercado</h2>
-            <br />
-            <p style={{ textAlign: "center", }}>Por favor, introduzca sus datos para iniciar sesión:</p>
-            <br />
-            <form onSubmit={login} style={{ textAlign: "center", }}>
-                Nombre: <input type="text" ref={nombreUser} /><br />
+        <main>
+            <section id="form" className="text-center">
+                <h1 className="lead display-3 text-danger pt-5 fw-bold">Login</h1>
+                <p className="mt-4 fw-medium text-muted">Enter your username and password</p>
                 <br />
-                Password: <input type="password" ref={passwordUser} /><br />
-                <br />
-                <button type="submit">Login </button>
-            </form>
-        </>
+                <form onSubmit={login} style={{ textAlign: "center", }}>
+                    Nombre: <input type="text" ref={nombreUser} /><br />
+                    <br />
+                    Password: <input type="password" ref={passwordUser} /><br />
+                    <br />
+                    <button type="submit">Login </button>
+                </form>
+            </section>
+        </main>
     )
 }

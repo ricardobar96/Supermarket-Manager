@@ -49,7 +49,11 @@ export const Productos_v1 = () => {
                     <tbody>
                         {productos?.productos?.map((item:Supermercado.Producto) => (
                         <tr key={item.idproducto}>
-                            <td><Link to={{pathname:"/api/v1/producto/" + item.idproducto}}>{item.idproducto}</Link></td>
+                            <td>
+                                <Link to={{pathname:"/api/v1/producto/" + item.idproducto}} className='text-decoration-none'>
+                                    {item.idproducto}
+                                </Link>
+                            </td>
                             <td>{item.nombre}</td>
                             <td>{item.preciounidad} €</td>
                             <td>{item.stock}</td>

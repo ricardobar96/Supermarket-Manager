@@ -51,7 +51,7 @@ export const Productos_v1 = () => {
                         <tr key={item.idproducto}>
                             <td><Link to={{pathname:"/api/v1/producto/" + item.idproducto}}>{item.idproducto}</Link></td>
                             <td>{item.nombre}</td>
-                            <td>{item.preciounidad}</td>
+                            <td>{item.preciounidad} €</td>
                             <td>{item.stock}</td>
                         </tr>
                         ))}

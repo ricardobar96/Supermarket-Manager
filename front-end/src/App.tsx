@@ -14,6 +14,7 @@ import ManageDetalle_v2 from './v2/ManageDetalle_v2';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { Container, Dropdown } from 'react-bootstrap';
+import logo from "./assets/logo.png";
 
 interface IProps { }
 interface IState { }
@@ -89,8 +90,8 @@ const Navbar = () => {
     <header className="container-fluid navbar-light bg-secondary shadow mb-5">
         <nav className="navbar navbar-expand-lg mx-5 px-4 py-2">
           <a className="navbar-brand px-5" href="/">
-            <img src="https://e7.pngegg.com/pngimages/155/3/png-clipart-sota-roda-sommardrommar-concrete-construction-augers-product-supermarket-logo-text-supermarket.png" width="50" height="50" 
-            className="d-inline-block align-top rounded-circle" alt=""></img>
+            <img src={logo} width="50" height="50" 
+            className="d-inline-block align-top rounded-circle" alt="img"></img>
              &nbsp;&nbsp;<span className='text-light fs-3'>SManager</span>
           </a>
 

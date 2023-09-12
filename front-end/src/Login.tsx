@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 export default function Inicio() {
 
     const nombreUser = useRef<HTMLInputElement>(null);
     const passwordUser = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
     const login = (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -22,6 +25,7 @@ export default function Inicio() {
                 const { data } = await axios.post(rutaDeLogin, login)
                 localStorage.clear();
                 localStorage.setItem("token", data);
+                navigate("/api/v1/productos");
             } catch (error) {
                 console.log(error);
             }

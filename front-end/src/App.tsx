@@ -27,7 +27,7 @@ export const RequireAuth = ({ children }: IProps) => {
   if (autorizado) {
     return children
   }
-  return <Navigate to="/login" />
+  return <Navigate to="/api/v1/productos" />
 }
 
 const App = () => {
@@ -89,7 +89,7 @@ const Navbar = () => {
   return (
     <header className="container-fluid navbar-light bg-secondary shadow mb-5">
         <nav className="navbar navbar-expand-lg mx-5 px-4 py-2">
-          <a className="navbar-brand px-5" href="/">
+          <a className="navbar-brand px-5" href="/api/v1/productos">
             <img src={logo} width="50" height="50" 
             className="d-inline-block align-top rounded-circle" alt="img"></img>
              &nbsp;&nbsp;<span className='text-light fs-3'>SManager</span>

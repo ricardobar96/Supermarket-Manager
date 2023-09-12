@@ -34,20 +34,32 @@ export const Productos_v1 = () => {
     }, []);
 
     return (
-        <>
-            <h3>Productos:</h3>
-            <ul>
-                {
-                productos?.productos?.map( (a:Supermercado.Producto) => {
-                    return (
-                    <Link to={{pathname:"/api/v1/producto/" + a.idproducto}}>
-                        <li>Id: {a.idproducto} || Nombre: {a.nombre} || Precio por unidad: {a.preciounidad} || Stock: {a.stock}</li>
-                    </Link>
-                );
-            })
-            }
-            </ul>
-        </>
+        <main className="w-50 mx-auto rounded" style={{background: "#d6eaf8"}}>
+            <section className="m-auto mt-5 text-center">
+                <h1 className="lead display-6 text-dark py-3 fw-bold">Catalog</h1>
+                <table className="table table-bordered table-light table-hover mb-2">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Unit price</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productos?.productos?.map((item:Supermercado.Producto) => (
+                        <tr key={item.idproducto}>
+                            <td><Link to={{pathname:"/api/v1/producto/" + item.idproducto}}>{item.idproducto}</Link></td>
+                            <td>{item.nombre}</td>
+                            <td>{item.preciounidad}</td>
+                            <td>{item.stock}</td>
+                        </tr>
+                        ))}
+                    </tbody>
+                </table>
+                
+            </section>
+        </main>
         );
     }
     export default Productos_v1;

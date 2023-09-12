@@ -33,7 +33,7 @@ export default function Inicio() {
     return (
         <main className="w-50 mx-auto rounded" style={{background: "#d6eaf8"}}>
             <section id="form" className="text-center">
-                <h1 className="lead display-3 text-primary pt-5 fw-bold">Login</h1>
+                <h1 className="lead display-3 text-primary pt-5 fw-bold">SManager</h1>
                 <p className="mt-4 pb-2 fw-medium text-muted">Enter your username and password</p>
                 <form onSubmit={login}>
                     <input type="text" ref={nombreUser} className="text-center border border-primary rounded mb-3"

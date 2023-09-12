@@ -113,7 +113,7 @@ const Navbar = () => {
             
             <Dropdown.Menu>  
               <Dropdown.Item href="/api/v2/pedidos">Create order</Dropdown.Item>  
-              <Dropdown.Item href="/api/v2/detallepedidos">Check order</Dropdown.Item>  
+              <Dropdown.Item href="/api/v2/detallepedidos">Check orders</Dropdown.Item>  
             </Dropdown.Menu>  
           </Dropdown>  
           </Container> 

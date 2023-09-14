@@ -1,8 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
-export default function Logout() {
+const Logout: React.FC = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
     localStorage.clear();
-    //window.location.href = '/';
+    navigate("/");
+
+    return () => {
+        console.log('Logged out');
+      };
+    }, []);
 
     return (
         <>
@@ -13,3 +22,5 @@ export default function Logout() {
         </>
     )
 }
+
+export default Logout;

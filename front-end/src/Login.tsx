@@ -26,6 +26,7 @@ export default function Inicio() {
                 localStorage.clear();
                 localStorage.setItem("token", data);
                 navigate("/api/v1/productos");
+                window.location.reload();
             } catch (error) {
                 console.log(error);
             }

@@ -7,6 +7,7 @@ const Logout: React.FC = () => {
     useEffect(() => {
     localStorage.clear();
     navigate("/");
+    window.location.reload();
 
     return () => {
         console.log('Logged out');

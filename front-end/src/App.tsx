@@ -84,7 +84,8 @@ const App = () => {
   );
 }
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const token = localStorage.getItem('token');
 
   return (
     <header className="container-fluid navbar-light bg-secondary shadow mb-5">
@@ -106,6 +107,7 @@ const Navbar = () => {
             </Dropdown.Menu>  
           </Dropdown>  
 
+          {token ? (
           <Container className='p-4'>  
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  
@@ -117,7 +119,11 @@ const Navbar = () => {
               <Dropdown.Item href="/api/v2/detallepedidos">Check orders</Dropdown.Item>  
             </Dropdown.Menu>  
           </Dropdown>  
-          </Container> 
+          </Container>
+          ) : (
+            <Container className='p-4'> 
+            </Container>
+          )} 
 
           <Dropdown>  
             <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products">  

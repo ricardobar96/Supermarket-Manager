@@ -16,10 +16,6 @@ const Logout: React.FC = () => {
 
     return (
         <>
-            <h2 style={{ textAlign: "center", }}>Log out</h2>
-            <br />
-            <p style={{ textAlign: "center", }}>You just logged out</p>
-            <br />
         </>
     )
 }

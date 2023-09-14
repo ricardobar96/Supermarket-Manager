@@ -132,7 +132,11 @@ const Navbar: React.FC = () => {
             
             <Dropdown.Menu>  
               <Dropdown.Item href="/">Login</Dropdown.Item>  
+              {token ? (
               <Dropdown.Item href="/logout">Logout</Dropdown.Item>  
+              ) : (
+                ""
+              )} 
             </Dropdown.Menu>  
           </Dropdown> 
           

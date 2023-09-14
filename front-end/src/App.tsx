@@ -103,7 +103,11 @@ const Navbar: React.FC = () => {
             
             <Dropdown.Menu>  
               <Dropdown.Item href="/api/v1/productos">Catalog</Dropdown.Item>  
+              {token ? (
               <Dropdown.Item href="/api/v2/productos">Manage products</Dropdown.Item>  
+              ) : (
+                ""
+              )}
             </Dropdown.Menu>  
           </Dropdown>  
 

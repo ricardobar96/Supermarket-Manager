@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Route, BrowserRouter, Routes, Navigate, useNavigate } from 'react-router-dom';
-import Login from './Login';
+import Login from './user/Login';
 import Productos_v1 from './v1/Producto_v1';
 import Productos_v2 from './v2/Producto_v2';
-import Logout from './Logout';
+import Logout from './user/Logout';
 import ManageProducto_v1 from './v1/ManageProducto_v1';
 import ManageProducto_v2 from './v2/ManageProducto_v2';
 import Pedidos_v2 from './v2/Pedido_v2';

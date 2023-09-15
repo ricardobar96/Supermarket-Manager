@@ -41,8 +41,8 @@ export default function ManageProducto_v1() {
     return (
         <>
             <div>
-                <h3>Datos del Producto: </h3>
-                <h4>Id: {stProducto.producto?.idproducto} || Nombre: {stProducto.producto?.nombre} || Precio por unidad: {stProducto.producto?.preciounidad} || Stock: {stProducto.producto?.stock}</h4>
+                <h3>Product details: </h3>
+                <h4>Id: {stProducto.producto?.idproducto} || Name: {stProducto.producto?.nombre} || Unit price: {stProducto.producto?.preciounidad} || Stock: {stProducto.producto?.stock}</h4>
             </div>
         </>
     );

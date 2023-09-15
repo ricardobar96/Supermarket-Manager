@@ -55,20 +55,20 @@ export const Detalles_v2 = () => {
 
     return (
         <>
-            <h3>Detalles de los pedidos:</h3>
+            <h3>Orders details:</h3>
             <ul>
                 {
                     detalles?.detalles?.map((a: Supermercado.Detallepedido) => {
                         return (
                             <Link to={{ pathname: "/api/v2/detallepedido/" + a.iddetallepedido }}>
-                                <li>Id: {a.iddetallepedido} || Cantidad: {a.cantidad} || Precio por unidad: {a.preciounidad}</li>
+                                <li>Id: {a.iddetallepedido} || Quantity: {a.cantidad} || Unit price: {a.preciounidad}</li>
                             </Link>
                         );
                     })
                 }
             </ul>
             <br/>
-            <Link to={{pathname:"/api/v2/crearDetalle"}}> Hacer Detallepedido </Link> &nbsp;
+            <Link to={{pathname:"/api/v2/crearDetalle"}}> Specify order details </Link> &nbsp;
         </>
     );
 }

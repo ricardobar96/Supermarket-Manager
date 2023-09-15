@@ -37,10 +37,10 @@ export default function CreatePedido() {
     return (
         <>
             <form onSubmit={agregarPedidoApi}>
-                Fecha: <input type="text" ref={fechaP} /><br />
-                Pagado: <input type="number" ref={pagadoP} /> <br />
-                Enviado: <input type="number" ref={enviadoP} /> <br />
-                Entregado: <input type="number" ref={entregadoP} /> <br />
+                Date: <input type="text" ref={fechaP} /><br />
+                Paid: <input type="number" ref={pagadoP} /> <br />
+                Sent: <input type="number" ref={enviadoP} /> <br />
+                Delivered: <input type="number" ref={entregadoP} /> <br />
                 <button type="submit">Crear </button>
             </form>
         </>

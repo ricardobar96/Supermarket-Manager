@@ -44,8 +44,8 @@ export default function ManagePedido_v2() {
     return (
         <>
             <div>
-                <h3>Datos del Pedido: </h3>
-                <h4>Id: {stPedido.pedido?.idpedido} || Fecha: {stPedido.pedido?.fecha} || Pagado: {stPedido.pedido?.pagado} || Enviado: {stPedido.pedido?.enviado} || Entregado: {stPedido.pedido?.entregado}</h4>
+                <h3>Order details: </h3>
+                <h4>Id: {stPedido.pedido?.idpedido} || Date: {stPedido.pedido?.fecha} || Paid: {stPedido.pedido?.pagado} || Sent: {stPedido.pedido?.enviado} || Delivered: {stPedido.pedido?.entregado}</h4>
             </div>
         </>
     );

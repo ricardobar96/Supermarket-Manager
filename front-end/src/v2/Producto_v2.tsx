@@ -39,13 +39,13 @@ export const Productos_v2 = () => {
 
     return (
         <>
-            <h3>Productos:</h3>
+            <h3>Products:</h3>
             <ul>
                 {
                     productos?.productos?.map((a: Supermercado.Producto) => {
                         return (
                             <Link to={{ pathname: "/api/v2/producto/" + a.idproducto }}>
-                                <li>Id: {a.idproducto} || Nombre: {a.nombre} || Precio por unidad: {a.preciounidad} || Stock: {a.stock}</li>
+                                <li>Id: {a.idproducto} || Name: {a.nombre} || Unit price: {a.preciounidad} || Stock: {a.stock}</li>
                             </Link>
                         );
                     })

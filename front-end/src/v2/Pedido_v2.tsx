@@ -52,14 +52,14 @@ export const Pedidos_v2 = () => {
                     pedidos?.pedidos?.map((a: Supermercado.Pedido) => {
                         return (
                             <Link to={{ pathname: "/api/v2/pedido/" + a.idpedido }}>
-                                <li>Id: {a.idpedido} || Fecha: {a.fecha} || Pagado: {a.pagado} || Enviado: {a.enviado} || Entregado: {a.entregado}</li>
+                                <li>Id: {a.idpedido} || Date: {a.fecha} || Paid: {a.pagado} || Sent: {a.enviado} || Delivered: {a.entregado}</li>
                             </Link>
                         );
                     })
                 }
             </ul>
             <br/>
-            <Link to={{pathname:"/api/v2/crearPedido"}}> Hacer Pedido </Link> &nbsp;
+            <Link to={{pathname:"/api/v2/crearPedido"}}> Create order </Link> &nbsp;
         </>
     );
 }

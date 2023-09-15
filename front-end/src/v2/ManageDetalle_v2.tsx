@@ -52,11 +52,11 @@ export default function ManageDetalle_v2() {
     return (
         <>
             <div>
-                <h3>Datos del Detlalepedido: </h3>
-                <h4>Id: {stDetalle.detalle?.iddetallepedido} || Cantidad: {stDetalle.detalle?.cantidad} || Precio por unidad: {stDetalle.detalle?.preciounidad}</h4>
-                <h5>Producto:</h5>
+                <h3>Order details: </h3>
+                <h4>Id: {stDetalle.detalle?.iddetallepedido} || Quantity: {stDetalle.detalle?.cantidad} || Unit price: {stDetalle.detalle?.preciounidad}</h4>
+                <h5>Product:</h5>
                 {stDetalle.detalle?.producto.idproducto}
-                <h4>Id: {stDetalle.detalle?.producto.idproducto} || Nombre: {stDetalle.detalle?.producto.nombre}</h4>
+                <h4>Id: {stDetalle.detalle?.producto.idproducto} || Name: {stDetalle.detalle?.producto.nombre}</h4>
             </div>
         </>
     );

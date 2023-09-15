@@ -104,9 +104,9 @@ const Navbar: React.FC = () => {
             <Dropdown.Menu>  
               <Dropdown.Item href="/api/v1/productos">Catalog</Dropdown.Item>  
               {token ? (
-              <Dropdown.Item href="/api/v2/productos">Manage products</Dropdown.Item>  
+              <Dropdown.Item href="/api/v2/productos">Manage products</Dropdown.Item>
               ) : (
-                ""
+                <Dropdown.Item href="/api/v2/productos" className="disabled">Manage products</Dropdown.Item>
               )}
             </Dropdown.Menu>  
           </Dropdown>  
@@ -125,8 +125,18 @@ const Navbar: React.FC = () => {
           </Dropdown>  
           </Container>
           ) : (
-            <Container className='p-4'> 
-            </Container>
+            <Container className='p-4'>  
+          <Dropdown>  
+            <Dropdown.Toggle variant="btn btn-light dropdown-toggle" id="dropdown-products" className='disabled'>  
+              <i className="fa fa-truck fa-fw"></i>
+            </Dropdown.Toggle>  
+            
+            <Dropdown.Menu>  
+              <Dropdown.Item href="/api/v2/pedidos">Create order</Dropdown.Item>  
+              <Dropdown.Item href="/api/v2/detallepedidos">Check orders</Dropdown.Item>  
+            </Dropdown.Menu>  
+          </Dropdown>  
+          </Container>
           )} 
 
           <Dropdown>  
@@ -138,12 +148,12 @@ const Navbar: React.FC = () => {
               {!token ? (
               <Dropdown.Item href="/">Login</Dropdown.Item>  
               ) : (
-                ""
+                <Dropdown.Item href="/" className="disabled">Login</Dropdown.Item>
               )} 
               {token ? (
               <Dropdown.Item href="/logout">Logout</Dropdown.Item>  
               ) : (
-                ""
+                <Dropdown.Item href="/logout" className="disabled">Logout</Dropdown.Item>
               )} 
             </Dropdown.Menu>  
           </Dropdown> 

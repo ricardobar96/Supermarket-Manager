@@ -17,6 +17,9 @@ To manage its **MySQL database** I use the GUI-based application **phpMyAdmin**,
 
 ## Screenshots
 
+![super3](https://github.com/ricardobar96/Supermarket-Manager/assets/73242474/83a036fa-6f44-42c8-a4aa-0a8e74762de0)
+
+
 ![super1](https://github.com/ricardobar96/Supermarket-Manager/assets/73242474/d77f6111-fc01-4685-9ee2-ff4f9298c0ad)
 
 

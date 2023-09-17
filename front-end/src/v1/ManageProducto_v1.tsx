@@ -39,33 +39,33 @@ export default function ManageProducto_v1() {
         [id]
     )
     return (
-        <section style={{background: 'blue'}}>
-            <div className="container py-5">
-                <div className="row">
+        <section>
+            <div className="container py-2">
+                <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div className="card">
+                        <div className="card " style={{background: "#d6eaf8"}}>
                             <div className="d-flex justify-content-between p-3">
-                                <p className="lead mb-0">Today's Combo Offer</p>
+                                <p className="lead mb-0">Product details</p>
                                     <div className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
                                     style={{width: "35px", height: "35px"}}>
-                                        <p className="text-white mb-0 small">x4</p>
+                                        <p className="text-white mb-0 small">x{stProducto.producto?.stock}</p>
                                     </div>
                                 </div>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp"
-                            className="card-img-top" alt="Laptop" />
+                            <img src="https://www.kesargrocery.com/images/P/Wonderful%20Pistachios%2C%20No%20Shell%20Nuts%2C%20Variety%20Pack%20%28Pack%20of%209%29.webp"
+                            className="card-img-top" style={{height: "300px"}} alt="Laptop" />
                             <div className="card-body">
                                 <div className="d-flex justify-content-between">
-                                    <p className="small"><a href="#!" className="text-muted">Laptops</a></p>
-                                    <p className="small text-danger"><s>$1099</s></p>
+                                    <p className="small"><a href="/api/v1/productos" className="text-danger text-decoration-none">Return to catalog</a></p>
+                                    <p className="small text-danger"><s>{stProducto.producto?.preciounidad} €</s></p>
                                 </div>
 
                             <div className="d-flex justify-content-between mb-3">
-                                <h5 className="mb-0">HP Notebook</h5>
-                                <h5 className="text-dark mb-0">$999</h5>
+                                <h5 className="mb-0">{stProducto.producto?.nombre}</h5>
+                                <h5 className="text-dark mb-0">{stProducto.producto?.preciounidad} €</h5>
                             </div>
 
                             <div className="d-flex justify-content-between mb-2">
-                                <p className="text-muted mb-0">Available: <span className="fw-bold">6</span></p>
+                                <p className="text-muted mb-0">Available: <span className="fw-bold">{stProducto.producto?.stock}</span></p>
                                 <div className="ms-auto text-warning">
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
@@ -79,11 +79,6 @@ export default function ManageProducto_v1() {
                 </div>
             </div>
         </div>
-        
-            <div>
-                <h3>Product details: </h3>
-                <h4>Id: {stProducto.producto?.idproducto} || Name: {stProducto.producto?.nombre} || Unit price: {stProducto.producto?.preciounidad} || Stock: {stProducto.producto?.stock}</h4>
-            </div>
-        </section>
+    </section>
     );
 }

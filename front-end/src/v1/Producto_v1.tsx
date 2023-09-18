@@ -54,7 +54,11 @@ export const Productos_v1 = () => {
                                     {item.idproducto}
                                 </Link>
                             </td>
-                            <td>{item.nombre}</td>
+                            <td>
+                                <Link to={{pathname:"/api/v1/producto/" + item.idproducto}} className='text-decoration-none'>
+                                {item.nombre}
+                                </Link>
+                            </td>
                             <td>{item.preciounidad} €</td>
                             <td>{item.stock}</td>
                         </tr>

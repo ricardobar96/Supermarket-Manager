@@ -54,7 +54,7 @@ export default function ManageProducto_v1() {
                         <div className="card " style={{background: "#d6eaf8"}}>
                             <div className="d-flex justify-content-between p-3">
                             <Button className="btn btn-danger btn-md" onClick={routeOrder}>Return</Button>
-                            <button className="btn btn-success btn-md" onClick={routeOrder}>Order!</button>
+                            <button className="btn btn-success btn-md" onClick={routeOrder}>&nbsp;Order&nbsp;</button>
                                     
                                 </div>
                             <img src="https://www.kesargrocery.com/images/P/Wonderful%20Pistachios%2C%20No%20Shell%20Nuts%2C%20Variety%20Pack%20%28Pack%20of%209%29.webp"

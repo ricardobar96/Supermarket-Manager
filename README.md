@@ -17,13 +17,13 @@ To manage its **MySQL database** I use the GUI-based application **phpMyAdmin**,
 
 ## Screenshots
 
-![super3](https://github.com/ricardobar96/Supermarket-Manager/assets/73242474/e9d5b9ae-652a-4609-a99f-21393f1e4315)
+![super1](images/super1.png)
 
 
-![super1](https://github.com/ricardobar96/Supermarket-Manager/assets/73242474/d77f6111-fc01-4685-9ee2-ff4f9298c0ad)
+![super2](images/super2.png)
 
 
-![catalog](https://github.com/ricardobar96/Supermarket-Manager/assets/73242474/4b9df867-1d51-4a08-965c-b472ff20cff9)
+![super3](images/super3.png)
 
 <br>
 

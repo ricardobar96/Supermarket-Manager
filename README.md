@@ -10,8 +10,8 @@ To manage its **MySQL database** I use the GUI-based application **phpMyAdmin**,
 
 <br>
 
-| [:camera: Screenshots](#screenshots) | [📖 Features](#features) | [🔑 Relationships](#relationships) |
-| -------- | ----------- | ----------- |
+| [:camera: Screenshots](#screenshots) | [📖 Features](#features) | [🔑 Relationships](#relationships) | [🤝 Contributing](#contributing) | [🔖 License](#license) |
+| -------- | ----------- | ----------- | ----------- | ----------- |
 
 <br>
 
